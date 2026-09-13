@@ -100,8 +100,6 @@ AI_Shopping_Agent/
 │   ├── nginx.conf
 │   └── Dockerfile
 │
-├── Database_NV.sql                 # PostgreSQL schema + seed data (v2.0)
-├── Database_NV_Changelog.md        # Changelog schema
 ├── docker-compose.yml              # Orchestration
 ├── .env.example                    # Template biến môi trường
 ├── .gitignore
