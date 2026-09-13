@@ -63,3 +63,5 @@ logs/
 **/logs/
 tmp/
 temp/
+Database_NV_Changelog.md
+Database_NV.sql
