@@ -100,8 +100,6 @@ AI_Shopping_Agent/
 │   ├── nginx.conf
 │   └── Dockerfile
 │
-├── Database_NV.sql                 # PostgreSQL schema + seed data (v2.0)
-├── Database_NV_Changelog.md        # Changelog schema
 ├── docker-compose.yml              # Orchestration
 ├── .env.example                    # Template biến môi trường
 ├── .gitignore
@@ -129,7 +127,7 @@ AI_Shopping_Agent/
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/<your-username>/AI_Shopping_Agent.git
+git clone https://github.com/HuynhThinh06/AIShoppingAgent.git
 cd AI_Shopping_Agent
 
 # 2. Tạo file .env từ template
