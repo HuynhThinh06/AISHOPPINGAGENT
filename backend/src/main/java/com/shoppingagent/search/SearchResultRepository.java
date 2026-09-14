@@ -23,7 +23,7 @@ public class SearchResultRepository {
                     .searchQuery(queryRef)
                     .product(com.shoppingagent.shared.entity.Product.builder().id(rp.getProductId()).build())
                     .rankPosition(rp.getRankPosition())
-                    .score(BigDecimal.valueOf(rp.getScore()))   // Double → BigDecimal
+                    .score(rp.getScore())
                     .build();
             entityManager.persist(result);
         });

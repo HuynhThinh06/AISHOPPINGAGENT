@@ -3,8 +3,6 @@ package com.shoppingagent.shared.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "search_results")
 @Getter @Setter
@@ -27,6 +25,6 @@ public class SearchResult {
     @Column(name = "rank_position", nullable = false)
     private Integer rankPosition;
 
-    @Column(nullable = false, precision = 6, scale = 4)
-    private BigDecimal score;
+    @Column(nullable = false, columnDefinition = "float8")
+    private Double score;
 }

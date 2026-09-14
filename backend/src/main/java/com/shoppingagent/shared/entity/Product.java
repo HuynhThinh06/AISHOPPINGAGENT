@@ -2,6 +2,7 @@ package com.shoppingagent.shared.entity;
 
 import com.shoppingagent.shared.config.JsonbConverter;
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -53,7 +54,7 @@ public class Product {
      * Thông số kỹ thuật dạng JSONB, vd: {"ram": 16, "cpu": "i5-1235U"}
      * Khóa phải khớp với category_attributes.attribute_key
      */
-    @Convert(converter = JsonbConverter.class)
+    @JdbcTypeCode(org.hibernate.type.SqlTypes.JSON)
     @Column(columnDefinition = "jsonb", nullable = false)
     private Map<String, Object> specs;
 
