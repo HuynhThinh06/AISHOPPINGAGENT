@@ -42,7 +42,7 @@ public class Product {
     @Column(name = "product_url", columnDefinition = "TEXT")
     private String productUrl;
 
-    @Column(name = "avg_rating", precision = 3, scale = 2)
+    @Column(name = "avg_rating", columnDefinition = "numeric(3,2)")
     private BigDecimal avgRating;
 
     @Builder.Default
@@ -74,4 +74,7 @@ public class Product {
 
     @OneToOne(mappedBy = "product", fetch = FetchType.LAZY)
     private ReviewSummary reviewSummary;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<ProductImage> images;
 }

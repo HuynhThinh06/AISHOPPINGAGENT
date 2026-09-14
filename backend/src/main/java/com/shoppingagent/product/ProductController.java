@@ -20,4 +20,12 @@ public class ProductController {
     public ResponseEntity<ProductDetailDTO> getProduct(@PathVariable Long id) {
         return ResponseEntity.ok(productService.getById(id));
     }
+
+    @PostMapping(consumes = org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Tạo sản phẩm mới (có kèm upload ảnh)")
+    public ResponseEntity<ProductDetailDTO> createProduct(
+            @RequestPart("product") com.shoppingagent.product.dto.ProductCreateRequest request,
+            @RequestPart(value = "images", required = false) java.util.List<org.springframework.web.multipart.MultipartFile> images) {
+        return ResponseEntity.ok(productService.createProduct(request, images));
+    }
 }

@@ -4,27 +4,24 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "search_results")
+@Table(name = "product_images")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 @Builder
-public class SearchResult {
+public class ProductImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "query_id", nullable = false)
-    private SearchQuery searchQuery;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @Column(name = "rank_position", nullable = false)
-    private Integer rankPosition;
+    @Column(name = "image_url", columnDefinition = "TEXT", nullable = false)
+    private String imageUrl;
 
-    @Column(nullable = false)
-    private Double score;
+    @Builder.Default
+    @Column(name = "is_primary")
+    private Boolean isPrimary = false;
 }

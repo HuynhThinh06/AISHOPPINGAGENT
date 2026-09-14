@@ -89,8 +89,9 @@ public class SearchService {
     private SearchQuery saveSearchQuery(SearchRequest request, Long userId,
                                          ExtractedCriteria criteria, String categoryCode) {
         var category = categoryRepository.findByCode(categoryCode).orElse(null);
+        com.shoppingagent.shared.entity.User userRef = userId != null ? com.shoppingagent.shared.entity.User.builder().id(userId.intValue()).build() : null;
         SearchQuery query = SearchQuery.builder()
-                .userId(userId)
+                .user(userRef)
                 .sessionId(request.getSessionId())
                 .queryText(request.getQueryText())
                 .categoryDetected(category)

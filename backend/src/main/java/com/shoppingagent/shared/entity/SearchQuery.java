@@ -20,8 +20,9 @@ public class SearchQuery {
     private Long id;
 
     /** NULL nếu khách vãng lai chưa đăng nhập */
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     /** Định danh phiên cho khách chưa đăng nhập */
     @Column(name = "session_id", length = 100)

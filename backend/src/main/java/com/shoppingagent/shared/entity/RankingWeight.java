@@ -23,6 +23,6 @@ public class RankingWeight {
     private String criteria;
 
     /** Giá trị 0.00 – 1.00 */
-    @Column(nullable = false, precision = 4, scale = 2)
+    @Column(nullable = false, columnDefinition = "numeric(4,2)")
     private Double weight;
 }

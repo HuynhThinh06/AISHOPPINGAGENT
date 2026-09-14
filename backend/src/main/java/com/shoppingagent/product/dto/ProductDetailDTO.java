@@ -19,4 +19,5 @@ public class ProductDetailDTO {
     private BigDecimal avgRating;
     private Integer reviewCount;
     private Map<String, Object> specs;
+    private java.util.List<String> imageUrls;
 }
