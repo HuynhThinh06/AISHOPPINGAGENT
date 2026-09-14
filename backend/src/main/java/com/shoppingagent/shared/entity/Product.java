@@ -2,6 +2,7 @@ package com.shoppingagent.shared.entity;
 
 import com.shoppingagent.shared.config.JsonbConverter;
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -42,7 +43,7 @@ public class Product {
     @Column(name = "product_url", columnDefinition = "TEXT")
     private String productUrl;
 
-    @Column(name = "avg_rating", precision = 3, scale = 2)
+    @Column(name = "avg_rating", columnDefinition = "numeric(3,2)")
     private BigDecimal avgRating;
 
     @Builder.Default
@@ -53,7 +54,7 @@ public class Product {
      * Thông số kỹ thuật dạng JSONB, vd: {"ram": 16, "cpu": "i5-1235U"}
      * Khóa phải khớp với category_attributes.attribute_key
      */
-    @Convert(converter = JsonbConverter.class)
+    @JdbcTypeCode(org.hibernate.type.SqlTypes.JSON)
     @Column(columnDefinition = "jsonb", nullable = false)
     private Map<String, Object> specs;
 
@@ -74,4 +75,7 @@ public class Product {
 
     @OneToOne(mappedBy = "product", fetch = FetchType.LAZY)
     private ReviewSummary reviewSummary;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<ProductImage> images;
 }

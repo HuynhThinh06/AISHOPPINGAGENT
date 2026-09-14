@@ -1,16 +1,12 @@
-package com.shoppingagent.product.dto;
+package com.shoppingagent.seed.dto;
 
-import lombok.Builder;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.util.Map;
 
-/** DTO đầy đủ thông tin sản phẩm cho trang chi tiết */
 @Data
-@Builder
-public class ProductDetailDTO {
-    private Long id;
-    private String categoryCode;
+public class ProductSeedRequest {
+    private String categoryCode; // LAPTOP or PHONE
     private String sku;
     private String name;
     private String brand;
@@ -19,5 +15,4 @@ public class ProductDetailDTO {
     private BigDecimal avgRating;
     private Integer reviewCount;
     private Map<String, Object> specs;
-    private java.util.List<String> imageUrls;
 }

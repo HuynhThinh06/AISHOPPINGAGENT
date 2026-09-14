@@ -21,9 +21,9 @@ public class SearchResultRepository {
         ranked.forEach(rp -> {
             SearchResult result = SearchResult.builder()
                     .searchQuery(queryRef)
-                    .productId(rp.getProductId())
+                    .product(com.shoppingagent.shared.entity.Product.builder().id(rp.getProductId()).build())
                     .rankPosition(rp.getRankPosition())
-                    .score(BigDecimal.valueOf(rp.getScore()))   // Double → BigDecimal
+                    .score(rp.getScore())
                     .build();
             entityManager.persist(result);
         });
