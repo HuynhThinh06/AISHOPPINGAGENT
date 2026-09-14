@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -22,7 +23,7 @@ public class SearchResultRepository {
                     .searchQuery(queryRef)
                     .productId(rp.getProductId())
                     .rankPosition(rp.getRankPosition())
-                    .score(rp.getScore())
+                    .score(BigDecimal.valueOf(rp.getScore()))   // Double → BigDecimal
                     .build();
             entityManager.persist(result);
         });
