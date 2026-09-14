@@ -37,6 +37,9 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
     default Map<String, Double> findWeightsByCategoryCode(String code) {
         return findWeightEntities(code).stream()
-                .collect(Collectors.toMap(RankingWeight::getCriteria, RankingWeight::getWeight));
+                .collect(Collectors.toMap(
+                        RankingWeight::getCriteria,
+                        rw -> rw.getWeight().doubleValue()   // BigDecimal → Double
+                ));
     }
 }

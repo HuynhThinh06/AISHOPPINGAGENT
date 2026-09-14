@@ -2,6 +2,7 @@ package com.shoppingagent.shared.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "ranking_weights")
@@ -22,7 +23,11 @@ public class RankingWeight {
     @Column(nullable = false, length = 50)
     private String criteria;
 
-    /** Giá trị 0.00 – 1.00 */
-    @Column(nullable = false, columnDefinition = "numeric(4,2)")
-    private Double weight;
+    /**
+     * Giá trị 0.00 – 1.00.
+     * Dùng BigDecimal để khớp với DECIMAL(4,2) trong DB.
+     * Hibernate 7 không cho phép precision/scale trên kiểu Double/Float.
+     */
+    @Column(nullable = false, precision = 4, scale = 2)
+    private BigDecimal weight;
 }
